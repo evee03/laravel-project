@@ -1,20 +1,28 @@
-# FitPlan
-
-<div align="left">
-  <img src="resources/logo.png" alt="Logo" width="150" style="vertical-align: middle;">
-  <span style="font-size: 150px; font-weight: bold; vertical-align: middle;">FitPlan</span>
-</div>
+# FitPlan - zarządzaj swoimi treningami
 
 
-Strona webowa **FitPlan** służy do zarządzania planami treningowymi oraz ćwiczeniami, stworzone we frameworku Laravel. Aplikacja umożliwia użytkownikom tworzenie i edytowanie planów treningowych.
+**FitPlan** to nowoczesna aplikacja webowa stworzona w frameworku **Laravel**, zaprojektowana w celu ułatwienia zarządzania planami treningowymi i ćwiczeniami. Aplikacja pozwala użytkownikom na tworzenie i edytowanie spersonalizowanych planów treningowych, które można dostosować do indywidualnych celów i potrzeb. Dzięki prostemu i intuicyjnemu interfejsowi, użytkownicy mogą łatwo organizować swoje treningi, a także modyfikować je w miarę potrzeb. **FitPlan** łączy funkcjonalność z przyjaznym doświadczeniem użytkownika, umożliwiając skuteczne śledzenie postępów w treningach i osiąganie założonych celów.
 
 ---
 ## Spis treści
 
-1. [Instalacja](#Instalacja)
-2. [Funkcjonalności](#funkcjonalności)
-3. [Wygląd strony](#wyglad-projektu)
-4. [Autor](#autor)
+1. [Technologie](#Technologie)
+2. [Instalacja](#Instalacja)
+3. [Funkcjonalności](#Funkcjonalności)
+4. [Wygląd strony](#Wyglad-strony)
+5. [Autor](#Autor)
+
+---
+## Technologie
+
+- **Laravel**  
+  Framework PHP, który posłużył jako fundament projektu. Został wykorzystany do tworzenia backendu aplikacji, obsługi routingu, walidacji formularzy oraz interakcji z bazą danych.
+
+- **Bootstrap**  
+  Framework CSS użyty do szybkiego i estetycznego projektowania interfejsu użytkownika. Dzięki niemu aplikacja jest responsywna i przyjazna dla użytkownika.
+
+- **CSS**  
+  Dodano niestandardowe style, aby dostosować wygląd aplikacji tam, gdzie Bootstrap nie spełniał wymagań lub były potrzebne unikalne elementy wizualne.
 
 ---
 
@@ -64,7 +72,7 @@ Jeśli nie masz zainstlowanego XAMPP'a zrób to i włącz apache oraz mysql.
 ## Funkcjonalności
 
 
-- **Logowanie i rejestracja:** Założenie konta w celu stworzenia personalizowanych pod siebie treningów, a także dodawanie innych do ulubionych.
+- **Logowanie i rejestracja:** Założenie konta w celu stworzenia spersonalizowanych treningów, a także dodawanie do ulubionych.
 - **Zarządzanie treningami:** Dodawanie, edytowanie i usuwanie treningów.
 - **Baza ćwiczeń:** Przeglądanie dostępnych ćwiczeń wraz z ich filmami.
 - **Planowanie:** Tworzenie planów treningowych dopasowanych do użytkownika.
@@ -78,7 +86,7 @@ Jeśli nie masz zainstlowanego XAMPP'a zrób to i włącz apache oraz mysql.
 
 | Logowanie i Rejestracja        | Treningi        | Mięśnie i Ćwiczenia      | 
 |----------------------|---------------------|---------------------|
-| ![logowanie i rejestracja](resources/logowanie_i_rejestracja.gif) | ![treningi](resources/treningi_unlog.gif) | ![Strona główna](resources/miescnie_i_cwiczenia.gif) |
+| ![logowanie i rejestracja](resources/logowanie_i_rejestracja.gif) | ![treningi](resources/treningi_unlog.gif) | ![Strona główna](resources/miesnie_i_cwiczenia.gif) |
 
 | Widok po zalogowaniu         | Ulubione treningi        | Dodawanie treningu          |
 |----------------------|---------------------|---------------------|
@@ -87,21 +95,6 @@ Jeśli nie masz zainstlowanego XAMPP'a zrób to i włącz apache oraz mysql.
 | Edycja i usuwanie       | Walidacja          | Niepoprawne dane           |
 |----------------------|---------------------|---------------------|
 | ![Edycja i usuwanie treningu](resources/edycja_i_usuwanie_treningu.gif) | ![walidacja](resources/walidacja_rejestracja.gif) | ![niepoprawne dane](resources/niepoprawny_email_lub_haslo.gif) |
-
-
-<div align="center">
-
-### Zdjęcia poglądowe
-
-</div>
-
-| Strona Główna          | Mięśnie & Ćwiczenia          | Treningi           |
-|----------------------|---------------------|---------------------|
-| ![strona główna](resources/str_glowna.png) | ![miesnie i cwiczeni](resources/mie_i_cw.png) | ![treningi](resources/tre.png) |
-
-| Utwórz trening         | Profil         | 
-|----------------------|---------------------|
-| ![utworz trening](resources/utworz_tre.png) | ![profil](resources/profil.png) | 
 
 ---
 
