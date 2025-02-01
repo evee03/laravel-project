@@ -86,7 +86,7 @@ Jeśli nie masz zainstlowanego XAMPP'a zrób to i włącz apache oraz mysql.
 
 | Logowanie i Rejestracja        | Treningi        | Mięśnie i Ćwiczenia      | 
 |----------------------|---------------------|---------------------|
-| ![logowanie i rejestracja](resources/logowanie_i_rejestracja.gif) | ![treningi](resources/treningi_unlog.gif) | ![Strona główna](resources/miesnie_i_cwiczenia.gif) |
+| ![logowanie i rejestracja](resources/logowanie_i_rejestracja.gif) | ![treningi](resources/treningi_unlog.gif) | ![mięśnie i ćwiczenia](resources/miesnie_i_cwiczenia_unlog.gif) |
 
 | Widok po zalogowaniu         | Ulubione treningi        | Dodawanie treningu          |
 |----------------------|---------------------|---------------------|
