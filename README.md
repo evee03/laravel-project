@@ -9,7 +9,7 @@
 1. [Technologie](#Technologie)
 2. [Instalacja](#Instalacja)
 3. [Funkcjonalności](#Funkcjonalności)
-4. [Wygląd-strony](#Wyglad-strony)
+4. [Wygląd-strony](#Wygląd-strony)
 5. [Autor](#Autor)
 
 ---
