@@ -78,7 +78,7 @@ Jeśli nie masz zainstlowanego XAMPP'a zrób to i włącz apache oraz mysql.
 - **Planowanie:** Tworzenie planów treningowych dopasowanych do użytkownika.
 - **Nowoczesny wygląd:** Frontend został zrobiony za pomoca bootstrapa oraz customowych elementów w CSS. Strona jest w pełni responsywna.
 
-## Wygląd strony
+## Wygląd-strony
 
 | Strona Główna          | Walidacja          | Niepoprawne dane           |
 |----------------------|---------------------|---------------------|
