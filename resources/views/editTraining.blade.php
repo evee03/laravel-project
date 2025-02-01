@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FitPlan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="/image/logo.png" />
     <style>
         body {
             background-color: #343a40;
@@ -112,7 +113,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-center" href="{{ url('/home') }}">Nowości</a>
+                        <a class="nav-link text-center" href="{{ url('/home') }}">Strona Główna</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-center" href="{{ url('/muscle-groups') }}">Mięśnie & Ćwiczenia</a>
@@ -150,7 +151,6 @@
     @csrf
     @method('PUT')
 
-    <!-- Wybór kategorii -->
     <div class="mb-3">
         <label for="category" class="form-label custom-p">Wybierz kategorię</label>
         <select id="category" name="category_id" class="form-select" required>
@@ -161,19 +161,16 @@
         </select>
     </div>
 
-    <!-- Tytuł -->
     <div class="mb-3">
         <label for="title" class="form-label custom-p">Tytuł Treningu</label>
         <input type="text" id="title" name="name" class="form-control" value="{{ $training->name }}" required>
     </div>
 
-    <!-- Opis -->
     <div class="mb-3">
         <label for="description" class="form-label custom-p">Opis Treningu</label>
         <textarea id="description" name="description" class="form-control" rows="3" required>{{ $training->description }}</textarea>
     </div>
 
-    <!-- Szczegóły treningu -->
     <div class="mb-3">
         <label for="program_duration" class="form-label custom-p">Czas trwania programu (w tygodniach)</label>
         <input type="number" id="program_duration" name="duration" class="form-control" value="{{ $training->duration }}" min="1" required>
@@ -187,7 +184,7 @@
         <input type="number" id="time_per_workout" name="TimePerWorkout" class="form-control" value="{{ $training->TimePerWorkout }}" min="1" required>
     </div>
 
-    <!-- Rozpiska ćwiczeń -->
+
     <hr class="w-100 custom-hr">
     <div id="workout-days"></div>
     <div class="row">
@@ -196,13 +193,10 @@
     </div>
 </form>
 
-
-<!-- <script src="{{ asset('animations.js') }}"> //Glupia nazwa ale tam sa elementy do dynamicznej strony, wybory w dniach itd
-</script>  -->
-<script src="{{ asset('editForm.js') }}"> //Glupia nazwa ale tam sa elementy do dynamicznej strony, wybory w dniach itd
+<script src="{{ asset('editForm.js') }}"> 
 </script>
 <script>
-    const exercises = @json($exercises);  // Przekazanie danych cwiczen do JS
+    const exercises = @json($exercises);  
     const trainingDays = @json($trainingDays);
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

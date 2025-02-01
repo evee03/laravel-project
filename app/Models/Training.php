@@ -15,7 +15,7 @@ class Training extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class, 'category_id')->withDefault();//tutaj dodalam 
+        return $this->belongsTo(Category::class, 'category_id')->withDefault();
     }
 
     public function trainingExercises()
@@ -28,16 +28,14 @@ class Training extends Model
         return $this->hasMany(TrainingDay::class);
     }
 
-    // App\Models\Training.php
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-
     public function workoutDays()
     {
-        return $this->hasMany(WorkoutDay::class); // Relacja z tabelą workout_days
+        return $this->hasMany(WorkoutDay::class); 
     }
 
     public function exercises()
@@ -45,6 +43,10 @@ class Training extends Model
         return $this->hasMany(TrainingExercise::class, 'training_id');
     }
     
+    public function favoritedBy()
+    {
+        return $this->belongsToMany(User::class, 'favorites', 'training_id', 'user_id');
+    }
 }
 
 

@@ -9,29 +9,21 @@ use HasFactory;
 
 class MuscleGroupController extends Controller
 {
-    protected $table = 'exercises_by_muscle_group'; // Nazwa tabeli w bazie danych
-
-    protected $primaryKey = 'id_exercises_by_muscle_group'; // Nazwa klucza głównego
-
-    public $timestamps = true; // Upewnij się, że masz kolumny `created_at` i `updated_at`
+    protected $table = 'exercises_by_muscle_group'; 
+    protected $primaryKey = 'id_exercises_by_muscle_group'; 
+    public $timestamps = true; 
 
     public function showMuscleGroups()
     {
-        // Sprawdzanie, czy użytkownik jest zalogowany
         $isLoggedIn = Auth::check();
-
-        // Pobranie danych z tabeli exercises_by_muscle_group
-        $muscleGroups = DB::table('exercises_by_muscle_group')->get();
-
-        // Jeśli użytkownik jest zalogowany, możesz dodać dodatkowe dane (np. powitanie)
+        $muscleGroups = DB::table('exercises_by_muscle_group')->paginate(9);
         if ($isLoggedIn) {
-            $user = Auth::user(); // Pobranie danych użytkownika
-            $message = "Witaj, " . $user->name; // Powitanie użytkownika
+            $user = Auth::user(); 
+            $message = "Witaj, " . $user->name; 
         } else {
             $message = "Zaloguj się, aby uzyskać więcej informacji!";
         }
 
-        // Przekazanie danych do widoku
         return view('muscle-groups', compact('muscleGroups', 'message', 'isLoggedIn'));
     }
 

@@ -10,13 +10,13 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $user = Auth::user(); // Pobiera dane aktualnie zalogowanego użytkownika
-        return view('profile', compact('user')); // Przekazuje zmienną $user do widoku
+        $user = Auth::user(); 
+        return view('profile', compact('user')); 
     }
 
     public function edit()
     {
-        $user = Auth::user(); //aktualnie zalogowany
+        $user = Auth::user(); 
         return view('profile', compact('user'));
     }
 
@@ -24,7 +24,6 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
-        // Walidacja danych
         $validated = $request->validate([
             'name' => 'required|string|min:3|max:20|regex:/^[a-zA-ZąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/',
             'surname' => 'required|string|min:3|max:20|regex:/^[a-zA-ZąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/',
@@ -62,7 +61,6 @@ class ProfileController extends Controller
             'goal.required' => 'Proszę zaznaczyć wybór.',
         ]);
 
-        // Aktualizacja danych
         $user->update($validated);
 
         return redirect()->route('profile')->with('success', 'Profil został zaktualizowany.');
@@ -70,15 +68,10 @@ class ProfileController extends Controller
 
     public function destroy(Request $request)
 {
-    $user = $request->user(); // Pobierz zalogowanego użytkownika
-
-    // Usuń użytkownika z bazy danych
+    $user = $request->user(); 
     $user->delete();
-
-    // Wyloguj użytkownika
     auth()->logout();
 
-    // Przekieruj na stronę główną z komunikatem
     return redirect('/')->with('success', 'Konto zostało pomyślnie usunięte.');
 }
 

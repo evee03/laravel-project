@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
+    <link rel="shortcut icon" type="image/x-icon" href="/image/logo.png" />
     <style>
         body {
             background-color: #343a40;
@@ -111,6 +111,38 @@
             background-color:#fff;
             -webkit-box-shadow: inset 0 0 6px rgba(90,90,90,0.7);
         }
+        .training-day-header {
+            background-color:#cc5800 ;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .custom-link {
+            background: linear-gradient(45deg,rgb(223, 148, 49),rgb(221, 142, 40));
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .custom-link:hover {
+            background: linear-gradient(45deg,rgb(209, 168, 112),rgb(175, 140, 94));
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -127,8 +159,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
+                    @if(Auth::check())
                     <li class="nav-item">
-                        <a class="nav-link text-center" href="{{ url('/home') }}">Nowości</a>
+                        <a class="nav-link text-center" href="{{ url('/home') }}">Strona Główna</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-center" href="{{ url('/muscle-groups') }}">Mięśnie & Ćwiczenia</a>
@@ -142,33 +175,52 @@
                     <li class="nav-item">
                         <a class="nav-link text-center" href="{{ url('/profil') }}">Profil</a>
                     </li>
+                    @else
+                    <li class="nav-item">
+                        <a class="nav-link text-center" href="{{ url('/') }}">Strona Główna</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-center" href="{{ url('/muscle-groups') }}">Mięśnie & Ćwiczenia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-center active" href="{{ url('/categories') }}">Treningi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-center" href="{{ url('/login') }}">Logowanie</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-center" href="{{ url('/register') }}">Rejestracja</a>
+                    </li>
+                    @endif
                 </ul>
             </div>
         </div>
     </nav>
 
     <div class="container mt-3 p-3">
-    <h1 class="text-center mb-4 pt-5 fw-bold">PLAN TRENINGOWY</h1>
-    <div class="row">
-        @php
-            $currentDay = null;
-        @endphp
+        <h1 class="text-center mb-4 pt-5 fw-bold">PLAN TRENINGOWY</h1>
+        <div class="row">
+            @php
+                $currentDay = null;
+            @endphp
 
-        @foreach ($trainingExercises as $trainingExercise)
-            @if ($currentDay != $trainingExercise->day)
-                @php
-                    $currentDay = $trainingExercise->day;
-                @endphp
-                <div class="col-12 mb-4">
-                    <h4 class="fw-bold col-md-6 px-4 text-center mx-auto custom-p pb-2">Dzień {{ $currentDay }}</h4>
-                    <h5 class="col-md-6 px-4 text-center mx-auto custom-p pb-2">{{ $trainingExercise->name_training_exercise }}</h5>
-                </div>
-                <hr class="w-100 custom-hr">
-            @endif
+            @foreach ($trainingExercises as $trainingExercise)
+                @if ($currentDay != $trainingExercise->day)
+                    @php
+                        $currentDay = $trainingExercise->day;
+                    @endphp
+                    <div class="col-12 mb-4">
+                        <div class="training-day-header">
+                            <h4 class="fw-bold mb-0">Dzień {{ $currentDay }}</h4>
+                            <h5 class="mb-0">{{ $trainingExercise->name_training_exercise }}</h5>
+                        </div>
+                    </div>
+                    <hr class="w-100 custom-hr">
+                @endif
 
-            <div class="col-md-4 mb-4 pb-3">
-                <div class="card shadow-sm border-light h-60">
-                    <div class="card-body">
+                <div class="col-md-4 mb-4 pb-3">
+                    <div class="card shadow-sm border-light h-60">
+                        <div class="card-body">
                             <div class="col-12 mb-2">
                                 <strong>Ćwiczenie:</strong> 
                                 <a href="{{ $trainingExercise->exercise->video_of_exercise }}" target="_blank" class="btn btn-link custom-link">
@@ -181,11 +233,11 @@
                             <div class="col-12">
                                 <strong>Powtórzenia:</strong> {{ $trainingExercise->reps }}
                             </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
-    </div>
+            @endforeach
+        </div>
     </div>
 
 

@@ -9,14 +9,7 @@ class TrainingExercise extends Model
 {
     use HasFactory;
 
-    // Określ nazwę tabeli
-    
-//     public function exercise()
-// {
-//     return $this->belongsTo(Exercise::class);  // Relacja z modelem Exercise
-// }
-
-protected $table = 'training_exercise';
+    protected $table = 'training_exercise';
 
     protected $fillable = [
         'training_id',

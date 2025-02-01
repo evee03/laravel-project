@@ -15,8 +15,8 @@ class Day extends Model
      * @var array
      */
     protected $fillable = [
-        'training_id', // ID powiązanego treningu
-        'name',        // Nazwa dnia treningowego
+        'training_id', 
+        'name',        
     ];
 
     /**
@@ -37,7 +37,7 @@ class Day extends Model
     public function exercises()
     {
         return $this->belongsToMany(Exercise::class)
-            ->withPivot(['series', 'reps']) // Dodatkowe dane dla ćwiczeń
-            ->withTimestamps();            // Automatyczne zarządzanie timestampami
+            ->withPivot(['series', 'reps']) 
+            ->withTimestamps();            
     }
 }

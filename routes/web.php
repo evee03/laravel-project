@@ -30,13 +30,18 @@ Route::get('/regulamin', function () {
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginPost'])->name('loginPost');
 
+//Favourite
+Route::post('/training/{id}/favorite', [TrainingController::class, 'favorite'])->name('training.favorite');
+Route::post('/training/{id}/unfavorite', [TrainingController::class, 'unfavorite'])->name('training.unfavorite');
 
+//Search
+Route::get('/search-exercises', [ExerciseController::class, 'searchExercises'])->name('search.exercises');
+
+//Main
 Route::middleware('auth')->get('/home', [HomeController::class, 'index'])->name('home');
 
+//Profile
 Route::middleware('auth')->get('/profil', [ProfileController::class, 'index'])->name('profile');
-
-Route::post('/logout', function () {Auth::logout(); return redirect('/');})->name('logout');
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/profil', [ProfileController::class, 'index'])->name('profile');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -45,24 +50,25 @@ Route::middleware(['auth'])->group(function () {
 
 Route::delete('/profile/delete', [ProfileController::class, 'destroy'])->name('profile.destroy')->middleware('auth');
 
-Route::get('/news', [NewsController::class, 'index'])->name('news.search');
+//logout
+Route::post('/logout', function () {Auth::logout(); return redirect('/');})->name('logout');
 
-// Strona główna z kategoriami
+//Categories
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 
+//Trainings
 Route::get('/trainings/{category:name}', [TrainingController::class, 'index'])->name('trainings.index');
-
 Route::get('/training/create', [TrainingController::class, 'create'])->name('training.create');
 Route::post('/training/store', [TrainingController::class, 'store'])->name('training.store');
-
-// routes/web.php
 Route::resource('trainings', TrainingController::class)->middleware('auth');
 
+//Edit Trainings
 Route::get('/training/{id}/edit', [TrainingController::class, 'edit'])->name('training.edit');
 Route::put('/training/{id}/edit', [TrainingController::class, 'update'])->name('training.update');
 Route::delete('/training/{id}', [TrainingController::class, 'destroy'])->name('training.destroy');
 
 Route::get('/training/{id}', [TrainingController::class, 'show'])->name('training.show');
 
+//Muscle group
 Route::get('/muscle-groups', [MuscleGroupController::class, 'showMuscleGroups']);
 Route::get('/muscle-group/{id}/exercises', [ExerciseController::class, 'showExercisesByMuscleGroup'])->name('muscle-group.exercises');

@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Training;
@@ -11,24 +12,27 @@ class TrainingController extends Controller
 {
     public function index(Category $category)
 {
-    $trainings = $category->trainings; // Relacja z modelu Category do Training
+    $trainings = $category->trainings;
+    $trainings = $category->trainings()->paginate(9); 
 
-    $trainings = $category->trainings()->paginate(9); //ilosc treningow wyswietlanych na stronie
+    $user = Auth::user();
+    if ($user) {
+        $user->load('favorites'); 
+    }
 
-    return view('trainings', compact('category', 'trainings'));
+    return view('trainings', compact('category', 'trainings', 'user'));
 }
 
 public function create()
 {
-    $exercises = Exercise::all(); // pobieranie wszystkich cwiczen
-    $categories = Category::all();  //pobieranie wszystkich kategorii
+    $exercises = Exercise::all(); 
+    $categories = Category::all();  
     return view('createTraining', compact('exercises', 'categories'));
 }
 
 
 public function store(Request $request)
 {
-    // Walidacja danych
     $validated = $request->validate([
         'category_id' => 'required|exists:categories,id',
         'name' => 'required|string|max:255',
@@ -47,10 +51,7 @@ public function store(Request $request)
         'workout_days.*.name.required' => 'Każdy dzień treningowy musi mieć nazwę.',
         'workout_days.*.exercises.*.exercise_id.required' => 'Musisz wybrać ćwiczenie.',
     ]);
-    
 
-
-    // Tworzenie treningu w tabeli `trainings`
     $training = Training::create([
         'category_id' => $validated['category_id'],
         'name' => $validated['name'],
@@ -58,34 +59,31 @@ public function store(Request $request)
         'duration' => $validated['duration'],
         'DaysPerWeek' => $validated['DaysPerWeek'],
         'TimePerWorkout' => $validated['TimePerWorkout'],
-        'user_id' => auth()->id(), // Przypisanie ID użytkownika
+        'user_id' => auth()->id(), 
     ]);
 
-    // Tworzenie dni treningowych i powiązanych ćwiczeń w tabeli `training_exercise`
     foreach ($validated['workout_days'] as $dayIndex => $day) {
         foreach ($day['exercises'] as $exercise) {
             TrainingExercise::create([
                 'training_id' => $training->id,
-                'exercise_id' => $exercise['exercise_id'],  // Zmienione na exercise_id
-                'day' => $dayIndex + 1, // numer dnia treningowego
+                'exercise_id' => $exercise['exercise_id'],  
+                'day' => $dayIndex + 1, 
                 'sets' => $exercise['series'],
                 'reps' => $exercise['reps'],
-                'name_training_exercise' => $day['name'], // nazwa dnia treningowego
+                'name_training_exercise' => $day['name'], 
             ]);
         }
     }
         
-
     return redirect()->route('categories.index')->with('success', 'Trening zapisano pomyślnie!');
 }
 
 public function edit($id)
 {
     $training = Training::where('id', $id)->where('user_id', auth()->id())->firstOrFail();
-    $exercises = Exercise::all(); // Wszystkie dostępne ćwiczenia
-    $categories = Category::all(); // Kategorie treningów
+    $exercises = Exercise::all(); 
+    $categories = Category::all(); 
 
-    // Pobierz dni treningowe z tabeli training_exercise
     $trainingDays = $training->exercises()
         ->orderBy('day')
         ->get()
@@ -114,7 +112,6 @@ public function update(Request $request, $id)
 {
     $training = Training::where('id', $id)->where('user_id', auth()->id())->firstOrFail();
 
-    // Walidacja danych
     $validated = $request->validate([
         'category_id' => 'required|exists:categories,id',
         'name' => 'required|string|max:255',
@@ -127,17 +124,14 @@ public function update(Request $request, $id)
         'days.*.exercises.*.reps' => 'required|integer|min:1',
     ]);
 
-    // Aktualizacja treningu
     $training->update([
         'category_id' => $validated['category_id'],
         'name' => $validated['name'],
         'description' => $validated['description'],
     ]);
 
-    // Usuń istniejące dni treningowe
     $training->exercises()->delete();
 
-    // Dodaj nowe dni treningowe
     foreach ($validated['days'] as $dayData) {
         foreach ($dayData['exercises'] as $exerciseData) {
             $training->exercises()->create([
@@ -153,30 +147,63 @@ public function update(Request $request, $id)
     return redirect()->route('categories.index')->with('success', 'Trening zaktualizowano pomyślnie!');
 }
 
+public function destroy($id)
+{
+    $training = Training::where('id', $id)->where('user_id', auth()->id())->firstOrFail();
+    $training->delete();
+
+    return redirect()->route('categories.index')->with('success', 'Trening usunięto pomyślnie!');
+}
 
 
+public function show($id)
+{
+    $training = Training::findOrFail($id); 
+    $trainingExercises = TrainingExercise::with('exercise')->where('training_id', $id)->get();
 
-    // TrainingController.php (destroy)
-    public function destroy($id)
-    {
-        $training = Training::where('id', $id)->where('user_id', auth()->id())->firstOrFail();
-        $training->delete();
-
-        return redirect()->route('categories.index')->with('success', 'Trening usunięto pomyślnie!');
-    }
-
-
-    public function show($id)
-    {
-        $training = Training::findOrFail($id); // Pobierz trening na podstawie ID
-
-        // Pobieramy powiązane ćwiczenia
-        $trainingExercises = TrainingExercise::with('exercise')  // Załadowanie powiązanych ćwiczeń
-        ->where('training_id', $id)
-        ->get();
-
-        return view('show', compact('training', 'trainingExercises')); // Przekaż dane do widoku
-    }
+    return view('show', compact('training', 'trainingExercises')); 
+}
     
+public function home()
+{
+    if (Auth::check()) {
+        $userId = Auth::id();
+        $trainings = Training::where('user_id', $userId)->get();
+        
+        \Log::info('Dane treningów: ', $trainings->toArray()); 
+        \Log::info('ID użytkownika: ' . $userId);
+    }        
 
+    $data = [];
+
+    if (Auth::check()) {
+        $userId = Auth::id();
+
+        $trainings = Training::where('user_id', $userId)->get();
+
+        \Log::info('Liczba treningów: ' . $trainings->count());
+
+        $data['trainings'] = $trainings;
+    }
+
+    return view('home', $data);
+}
+
+public function favorite($id)
+{
+    $user = Auth::user();
+    $training = Training::findOrFail($id);
+    $user->favorites()->attach($training->id);
+
+    return response()->json(['status' => 'success', 'message' => 'Training added to favorites.']);
+}
+
+public function unfavorite($id)
+{
+    $user = Auth::user();
+    $training = Training::findOrFail($id);
+    $user->favorites()->detach($training->id);
+
+    return response()->json(['status' => 'success', 'message' => 'Training removed from favorites.']);
+}
 }

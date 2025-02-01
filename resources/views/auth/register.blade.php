@@ -6,7 +6,14 @@
     <title>Rejestracja</title>
     <link rel="stylesheet" href="{{ asset('css/general.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="/image/logo.png" />
     <script src="{{ asset('animations.js') }}"></script>
+    <style>
+    .custom-alert.alert-success {
+        background-color:rgb(82, 146, 97) !important; 
+        border-color: #c3e6cb !important; 
+    }
+    </style>
 </head>
 <body>
     
@@ -50,18 +57,6 @@
         </symbol>
     </svg>
 
-    <!-- Success-->
-    @if (Session::has('success'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert" id="success-alert">
-        <div class="d-flex align-items-center">
-            <svg class="bi flex-shrink-0 me-2 icon-small" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-            <div class="flex-grow-1">
-                {{ Session::get('success') }}
-            </div>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    </div>
-    @endif
 
     <!-- Registration Form -->
     <form action="{{ route('register') }}" method="POST" class="needs-validation" novalidate>
@@ -72,6 +67,18 @@
                 <h1>Rejestracja</h1>
                 <p>Proszę uzupełnić pola aby założyć konto.</p>
             </div>
+
+            @if (Session::has('success'))
+                <div class="alert custom-alert alert-success alert-dismissible fade show" role="alert" id="success-alert">
+                    <div class="d-flex align-items-center">
+                        <svg class="alert-icon" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                        <div class="flex-grow-1 alert-text">
+                            {{ Session::get('success') }}
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            @endif
 
             <hr class="w-100 custom-hr">
 

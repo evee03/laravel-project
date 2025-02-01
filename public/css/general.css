@@ -3,6 +3,81 @@ html body {
     color: rgb(35, 35, 35); 
 }
 
+#carouselExample img {
+    height: 400px;
+    object-fit: cover;
+    }
+body {
+        background-color: #343a40;
+        color: rgb(35, 35, 35); 
+    }
+.btn-outline-custom-orange {
+    border-color: #cc5800 !important;
+    color: #cc5800 !important;
+}
+
+.btn-outline-custom-orange:hover {
+    background-color:rgb(201, 102, 26) !important;
+    color: white !important;
+}
+.custom-bg{
+    background-color:rgba(52, 58, 64, 0.07);
+}
+.custom-p{
+    color: white !important;
+}
+
+.custom-pagination .page-item {
+margin: 0 3px; 
+    }
+
+.custom-pagination .page-link {
+    background-color: #343a40; 
+    color: #ffffff;           
+    border: 1px solid #343a40; 
+    border-radius: 50%;       
+    transition: background-color 0.2s ease, transform 0.2s ease; 
+}
+
+.custom-pagination .page-item.active .page-link {
+    background-color: #495057; 
+    color: #ffffff;            
+    border-color: #495057;     
+    border-radius: 50%;      
+}
+
+.custom-pagination .page-link:hover {
+    background-color: #495057; 
+    color: #ffffff;            
+    border-radius: 50%;       
+}
+
+.custom-pagination .page-link:focus,
+.custom-pagination .page-link:active {
+    background-color: #495057; 
+    color: #ffffff;            
+    border-color: #495057;     
+    border-radius: 50%;       
+    outline: none;            
+    transform: scale(0.95);   
+}
+
+h1{
+    color:#e0e0e0;
+}
+
+.custom-pagination .page-item.disabled .page-link {
+    background-color: #343a40; 
+    color: #6c757d;           
+    border-color: #343a40;     
+    border-radius: 50%;       
+}
+
+.custom-pagination .page-item {
+    border-radius: 50%; 
+    overflow: hidden;   
+}
+
 .bg-custom {
     background-color: rgba(255, 255, 255, 0.6) !important; 
 }

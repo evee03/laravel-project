@@ -4,16 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Regulamin i Polityka Prywatności - FitPlan</title>
+    <link rel="stylesheet" href="{{ asset('css/general.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="/image/logo.png" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-
     <style>
-        body {
-            background-color: #343a40; /* Ciemne tło */
-            color: rgb(35, 35, 35); /* Jasny kolor tekstu */
-        }
         .bg-light {
-            background-color: rgba(255, 255, 255, 0.6) !important; /* Lekko przezroczysty jasny kolor dla kontenera */
+            background-color: rgba(255, 255, 255, 0.6) !important; 
         }
         .container {
             border-radius: 25px;
@@ -30,21 +27,6 @@
         .icon-hover:hover {
             color: #cc5800; 
         }
-        ::-webkit-scrollbar {
-            width: 12px;
-        }
-
-        ::-webkit-scrollbar-track {
-            -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,1);
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            border-radius: 10px;
-            background-color:#fff;
-            -webkit-box-shadow: inset 0 0 6px rgba(90,90,90,0.7);
-        }
-
     </style>
 </head>
 <body>
@@ -61,7 +43,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-center" href="#">Strona Główna</a>
+                        <a class="nav-link text-center" href="{{ url('/') }}">Strona Główna</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-center" href="{{ url('/muscle-groups') }}">Mięśnie & Ćwiczenia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-center" href="{{ url('/categories') }}">Treningi</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-center" href="{{ url('/login') }}">Logowanie</a>

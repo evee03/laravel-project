@@ -6,23 +6,19 @@ use App\Models\Training;
 
 class CategoryController extends Controller
 {
-    // Metoda do wyświetlania wszystkich kategorii
     public function index()
     {
-        // Pobierz wszystkie kategorie
         $categories = Category::all();
+
+        $categories = Category::paginate(9); 
         
-        // Przekaż kategorie do widoku
         return view('categories', compact('categories'));
     }
 
-    // Metoda do wyświetlania treningów w wybranej kategorii
     public function showTrainings(Category $category)
     {
-        // Pobierz treningi dla wybranej kategorii
-        $trainings = $category->trainings; // Załóżmy, że masz relację w modelu Category do treningów
-
-        // Przekaż dane do widoku
+        $trainings = $category->trainings; 
+        
         return view('trainings', compact('trainings', 'category'));
     }
 }

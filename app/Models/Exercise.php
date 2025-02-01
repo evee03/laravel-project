@@ -14,7 +14,7 @@ class Exercise extends Model
 
 public function create()
 {
-    $exercises = Exercise::all(); // Pobierz wszystkie ćwiczenia
+    $exercises = Exercise::all(); 
     return view('training.create', compact('exercise'));
 }
 

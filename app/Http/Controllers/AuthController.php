@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    // Wyszukuje plik widoku register.blade.php
     public function register()
     {
         return view('auth.register');
@@ -17,7 +16,6 @@ class AuthController extends Controller
 
     public function registerPost(Request $request)
     {
-        // Walidacja danych
         $validatedData = $request->validate([
             'name' => 'required|string|min:3|max:20|regex:/^[a-zA-ZąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/',
             'surname' => 'required|string|min:3|max:20|regex:/^[a-zA-ZąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/',
@@ -69,7 +67,6 @@ class AuthController extends Controller
             'regulations.required' => 'To pole jest wymagane.'
         ]);
 
-        // Tworzenie nowego użytkownika
         $user = new User();
 
         $user->name = $validatedData['name'];
@@ -103,10 +100,10 @@ class AuthController extends Controller
 
         if (Auth::attempt($credetials))
         {
-            return redirect('/home')->with('success', 'Logowanie udane.');
+            return redirect('/home')->with('success', 'Logowanie udane');
         }
 
-        return back()->with('error', 'Niepoprawny email lub hasło.');
+        return back()->with('error', 'Niepoprawny email lub hasło');
     }
 }
 

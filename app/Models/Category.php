@@ -10,10 +10,9 @@ class Category extends Model
 
     public function getRouteKeyName()
     {
-        return 'name'; // Laravel użyje tej kolumny do generowania i znajdowania linków
+        return 'name'; 
     }
 
-    // Relacja jeden-do-wielu z treningami
     public function trainings()
     {
         return $this->hasMany(Training::class, 'category_id');
