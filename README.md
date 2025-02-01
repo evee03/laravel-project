@@ -1,8 +1,8 @@
 # FitPlan
 
-<div align="center">
+<div align="left">
   <img src="resources/logo.png" alt="Logo" width="150" style="vertical-align: middle;">
-  <span style="font-size: 24px; font-weight: bold; vertical-align: middle;">FitPlan</span>
+  <span style="font-size: 150px; font-weight: bold; vertical-align: middle;">FitPlan</span>
 </div>
 
 
@@ -72,89 +72,26 @@ Jeśli nie masz zainstlowanego XAMPP'a zrób to i włącz apache oraz mysql.
 
 ## Wygląd strony
 
-<div align="center">
+| Strona Główna          | Walidacja          | Niepoprawne dane           |
+|----------------------|---------------------|---------------------|
+| ![Strona główna](resources/strona_glowna_unlog.gif) | ![walidacja](resources/walidacja_rejestracja.gif) | ![niepoprawne dane](resources/niepoprawny_email_lub_haslo.gif) |
 
-### Strona główna
+| Logowanie i Rejestracja        | Treningi        | Mięśnie i Ćwiczenia      | 
+|----------------------|---------------------|---------------------|
+| ![logowanie i rejestracja](resources/logowanie_i_rejestracja.gif) | ![treningi](resources/treningi_unlog.gif) | ![Strona główna](resources/miescnie_i_cwiczenia.gif) |
 
-![Strona główna](resources/strona_glowna_unlog.gif)
+| Widok po zalogowaniu         | Ulubione treningi        | Dodawanie treningu          |
+|----------------------|---------------------|---------------------|
+| ![widok_po_zalogowaniu](resources/widok_po_zalogowaniu.gif) | ![ulubione_treningi](resources/ulubione_treningi.gif) | ![Dodawanie treningu](resources/dodawanie_treningu.gif) |
 
-</div>
+| Edycja i usuwanie       | Walidacja          | Niepoprawne dane           |
+|----------------------|---------------------|---------------------|
+| ![Edycja i usuwanie treningu](resources/edycja_i_usuwanie_treningu.gif) | ![walidacja](resources/walidacja_rejestracja.gif) | ![niepoprawne dane](resources/niepoprawny_email_lub_haslo.gif) |
 
-<div align="center">
-
-### Walidacja 
-
-![walidaca](resources/walidacja_rejestracja.gif)
-
-</div>
-
-<div align="center">
-
-### Niepoprawne dane
-
-![niepoprawne dane](resources/niepoprawny_email_lub_haslo.gif)
-
-</div>
 
 <div align="center">
 
-### Logowanie i rejestracja
-
-![logowanie i rejestracja](resources/logowanie_i_rejestracja.gif)
-
-</div>
-
-<div align="center">
-
-### Treningi
-
-![treningi](resources/treningi_unlog.gif)
-
-</div>
-
-<div align="center">
-
-### Mięśnie & Ćwiczenia
-
-![Strona główna](resources/miescnie_i_cwiczenia.gif)
-
-</div>
-
-<div align="center">
-
-### Widok po zalogowaniu
-
-![widok_po_zalogowaniu](resources/widok_po_zalogowaniu.gif)
-
-</div>
-
-<div align="center">
-
-### Ulubione treningi
-
-![ulubione_treningi](resources/ulubione_treningi.gif)
-
-</div>
-
-<div align="center">
-
-### Dodawanie treningu
-
-![Dodawanie treningu](resources/dodawanie_treningu.gif)
-
-</div>
-
-<div align="center">
-
-### Edycja i usuwanie treningu
-
-![Edycja i usuwanie treningu](resources/edycja_i_usuwanie_treningu.gif)
-
-</div>
-
-<div align="center">
-
-### Zakładki po zalogowaniu
+### Zdjęcia poglądowe
 
 </div>
 
