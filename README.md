@@ -1,6 +1,6 @@
 # FitPlan
 
-![Logo](resources/logo.png)
+<img src="resources/logo.png" alt="Logo" width="150">
 
 Strona webowa **FitPlan** służy do zarządzania planami treningowymi oraz ćwiczeniami, stworzone we frameworku Laravel. Aplikacja umożliwia użytkownikom tworzenie i edytowanie planów treningowych.
 
@@ -56,7 +56,9 @@ Jeśli nie masz zainstlowanego XAMPP'a zrób to i włącz apache oraz mysql.
     ```
     Aplikacja będzie dostępna pod adresem: http://localhost:8000.
 
+
 ## Funkcjonalności
+
 
 - **Logowanie i rejestracja:** Założenie konta w celu stworzenia personalizowanych pod siebie treningów, a także dodawanie innych do ulubionych.
 - **Zarządzanie treningami:** Dodawanie, edytowanie i usuwanie treningów.
@@ -64,39 +66,97 @@ Jeśli nie masz zainstlowanego XAMPP'a zrób to i włącz apache oraz mysql.
 - **Planowanie:** Tworzenie planów treningowych dopasowanych do użytkownika.
 - **Nowoczesny wygląd:** Frontend został zrobiony za pomoca bootstrapa oraz customowych elementów w CSS. Strona jest w pełni responsywna.
 
+<div align="center">
+
 ## Wygląd strony
 
+</div>
+
+<div align="center">
+
 ### Strona główna
+
+</div>
+
 ![Strona główna](resources/strona_glowna_unlog.gif)
 
+<div align="center">
+
 ### Walidacja 
+
+</div>
+
 ![walidaca](resources/walidacja_rejestracja.gif)
 
+<div align="center">
+
 ### Niepoprawne dane
+
+</div>
+
 ![niepoprawne dane](resources/niepoprawny_email_lub_haslo.gif)
 
+<div align="center">
+
 ### Logowanie i rejestracja
+
+</div>
+
 ![logowanie i rejestracja](resources/logowanie_i_rejestracja.gif)
 
+<div align="center">
+
 ### Treningi
+
+</div>
+
 ![treningi](resources/treningi_unlog.gif)
 
+<div align="center">
+
 ### Mięśnie & Ćwiczenia
+
+</div>
+
 ![Strona główna](resources/miescnie_i_cwiczenia.gif)
 
+<div align="center">
+
 ### Widok po zalogowaniu
+
+</div>
+
 ![widok_po_zalogowaniu](resources/widok_po_zalogowaniu.gif)
 
+<div align="center">
+
 ### Ulubione treningi
+
+</div>
+
 ![ulubione_treningi](resources/ulubione_treningi.gif)
 
+<div align="center">
+
 ### Dodawanie treningu
+
+</div>
+
 ![Dodawanie treningu](resources/dodawanie_treningu.gif)
 
+<div align="center">
+
 ### Edycja i usuwanie treningu
+
+
+</div>
 ![Edycja i usuwanie treningu](resources/edycja_i_usuwanie_treningu.gif)
 
+<div align="center">
+
 ### Zakładki po zalogowaniu
+
+</div>
 
 | Strona Główna          | Mięśnie & Ćwiczenia          | Treningi           |
 |----------------------|---------------------|---------------------|
